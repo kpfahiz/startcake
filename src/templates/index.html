@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
   {% block content %}
 
     <!-- Hero Section-->
-    <section style="background: url(img/hero.jpg); background-size: cover; background-position: center center" class="hero">
+    <section style="background: url({%static 'img/hero.jpg'%}); background-size: cover; background-position: center center" class="hero">
       <div class="container">
         <div class="row">
           <div class="col-lg-7">
@@ -85,12 +86,12 @@
               </div>
             </div>
           </div>
-          <div class="image col-lg-5"><img src="img/featured-pic-3.jpeg" alt="..."></div>
+          <div class="image col-lg-5"><img src="{% static 'img/featured-pic-3.jpeg'%}" alt="..."></div>
         </div>
       </div>
     </section>
     <!-- Divider Section-->
-    <section style="background: url(img/divider-bg.jpg); background-size: cover; background-position: center bottom" class="divider">
+    <section style="background: url({%static 'img/divider-bg.jpg' %}); background-size: cover; background-position: center bottom" class="divider">
       <div class="container">
         <div class="row">
           <div class="col-md-7">

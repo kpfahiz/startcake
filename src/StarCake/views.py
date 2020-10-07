@@ -5,3 +5,6 @@ def index(request):
 
 def blog(request):
     return render(request,'blog.html',{})
+
+def post(reguest):
+    return render(reguest,'post.html',{})
