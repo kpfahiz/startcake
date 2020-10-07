@@ -9,6 +9,7 @@ class Author(models.Model):
 
     def __str__(self):
         return self.user.username
+
 class Category(models.Model):
     title = models.CharField(max_length=20)
 
@@ -21,8 +22,9 @@ class Post(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     comment_count = models.IntegerField(default=0)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    thumpnail = models.ImageField()
+    thumbnail = models.ImageField()
     categories = models.ManyToManyField(Category)
+    featured = models.BooleanField()
 
 
     def __str__(self):
