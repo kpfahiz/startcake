@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect,reverse
 from .models import Post
+from .forms import CommentForm
 from  marketing.models import Signup
 from django.db.models import Count,Q
 
@@ -62,11 +63,23 @@ def blog(request):
 def post(request,id):
     category_count = get_category_count()
     most_recent = Post.objects.order_by('-timestamp')[:3]
-    post =get_object_or_404(Post,id=id)
+    post = get_object_or_404(Post,id=id)
+    form = CommentForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            form.instance.user = request.user
+            form.instance.post = post
+            form.save()
+            return redirect(reverse("post_details",kwargs={
+                'id':post.pk
+            }))
     context = {
+        'form':form,
         'post': post,
         'most_recent': most_recent,
         'category_count': category_count,
     }
     return render(request,'post.html', context)
+
+
 
