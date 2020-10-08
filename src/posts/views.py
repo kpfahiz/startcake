@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from django.shortcuts import render,get_object_or_404,redirect,reverse
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from  marketing.models import Signup
 from django.db.models import Count,Q
 
@@ -83,3 +83,23 @@ def post(request,id):
 
 def contact(request):
     return render(request,"contact.html",{})
+
+
+def post_create(request):
+    form =PostForm(request.POST or None)
+    if request.method =='POST':
+        form.save()
+        return redirect(reverse("post_details",kwargs={
+            'id': form.instance.id
+        }))
+    context ={
+        'form': form
+    }
+    return render(request,"post_create.html",context)
+
+
+def post_update(request,id):
+    pass
+
+def post_delete(request,id):
+    pass
