@@ -81,5 +81,5 @@ def post(request,id):
     }
     return render(request,'post.html', context)
 
-
-
+def contact(request):
+    return render(request,"contact.html",{})

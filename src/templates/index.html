@@ -40,12 +40,12 @@
                     <a href="#">{{ cat }}</a>
                     {% endfor %}
                   </div>
-                  <a href="post.html">
+                  <a href="{{ obj.get_absalute_url }}">
                     <h2 class="h4">{{ obj.title }}</h2>
                   </a>
                 </header>
                 <p>{{ obj.overview}}</p>
-                  <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                  <footer class="post-footer d-flex align-items-center"><a href="{{ post.get_absalute_url }}" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{ obj.author.profile_img.url }}" alt="..." class="img-fluid"></div>
                     <div class="title"><span>John Doe</span></div></a>
                   <div class="date"><i class="icon-clock"></i> {{ obj.timestamp|timesince}} ago</div>
