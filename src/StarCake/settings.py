@@ -44,6 +44,11 @@ SITE_ID = 1
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LOGIN_REDIRECT_URL = '/index/'
+
+#ACCOUNT_ADAPTER = 'project.users.allauth.AccountAdapter'
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

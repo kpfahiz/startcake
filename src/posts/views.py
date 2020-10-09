@@ -5,7 +5,6 @@ from .forms import CommentForm, PostForm
 from  marketing.models import Signup
 from django.db.models import Count,Q
 
-
 def get_author(user):
     qs = Author.objects.filter(user=user)
     if qs.exists():
