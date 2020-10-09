@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path,include
 from posts.views import index,blog,post,search,contact,post_update,post_delete,post_create
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index),
