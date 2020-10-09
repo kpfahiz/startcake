@@ -27,11 +27,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'posts',
     'marketing',
     'tinymce',
     'crispy_forms',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+
+SITE_ID = 1
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -58,10 +67,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+            
             ],
         },
     },
 ]
+
 # TinyMCE
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
@@ -147,3 +159,14 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static_in_env')]
 VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(VENV_PATH,'static_root')
 MEDIA_ROOT = os.path.join(VENV_PATH,'media_root')
+
+
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
